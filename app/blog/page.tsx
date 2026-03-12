@@ -1,4 +1,5 @@
 import PostcardSmall from "@/components/blog/PostCard/postcardSmall";
+import Pagination from "./Pagination";
 import Link from "next/link";
 import { header as Header } from "@/components/common/Navbar/header";
 
@@ -10,8 +11,9 @@ const allPosts = Array.from({ length: 23 }).map((_, i) => ({
   
 }));
 
-export default function BlogPage({ searchParams }: { searchParams?: { page?: string } }) {
-  const page = Number(searchParams?.page || "1");
+export default async function BlogPage({ searchParams }: { searchParams?: Promise<{ page?: string }> | { page?: string } }) {
+  const sp = await searchParams;
+  const page = Number(sp?.page || "1");
   const pageSize = 6;
   const start = (page - 1) * pageSize;
   const paginated = allPosts.slice(start, start + pageSize);
@@ -32,17 +34,7 @@ export default function BlogPage({ searchParams }: { searchParams?: { page?: str
 
         </div>
 
-        <div className="mt-6 flex gap-2 justify-center items-center">
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <Link
-              key={i}
-              href={`/blog?page=${i + 1}`}
-              className={`px-3 py-1 rounded ${i + 1 === page ? "bg-blue-600 text-white" : "bg-white"}`}
-            >
-              {i + 1}
-            </Link>
-          ))}
-        </div>
+        <Pagination page={page} totalPages={totalPages} />
       </main>
     </div>
     </>
