@@ -2,14 +2,7 @@ import PostcardSmall from "@/components/blog/PostCard/postcardSmall";
 import Pagination from "./Pagination";
 import Link from "next/link";
 import { header as Header } from "@/components/common/Navbar/header";
-
-const allPosts = Array.from({ length: 23 }).map((_, i) => ({
-  id: String(i + 1),
-  title: `Post #${i + 1}`,
-  shortDescription: `This is the excerpt for post ${i + 1}`,
-  longDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." 
-  
-}));
+import { allPosts } from "@/lib/posts";
 
 export default async function BlogPage({ searchParams }: { searchParams?: Promise<{ page?: string }> | { page?: string } }) {
   const sp = await searchParams;
@@ -29,7 +22,7 @@ export default async function BlogPage({ searchParams }: { searchParams?: Promis
 
         <div className="space-y-4 grid grid-cols-2 gap-6">
           {paginated.map((p) => (
-            <PostcardSmall key={p.id} id={p.id} title={p.title} shortDescription={p.shortDescription} longDescription={p.longDescription} />
+            <PostcardSmall key={p.id} id={p.id} title={p.title} shortDescription={p.shortDescription} longDescription={p.longDescription} imageSrc={p.imageSrc} />
           ))}
 
         </div>
