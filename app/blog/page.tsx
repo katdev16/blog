@@ -12,6 +12,8 @@ export default async function BlogPage({ searchParams }: { searchParams?: Promis
   const paginated = allPosts.slice(start, start + pageSize);
   const totalPages = Math.ceil(allPosts.length / pageSize);
 
+ 
+
   return (
     <>
      <Header/>

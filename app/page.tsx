@@ -1,6 +1,8 @@
 import Link from "next/link";
 import PostcardLarge from "@/components/blog/PostCard/postcardLarge";
 import { header as Header } from "@/components/common/Navbar/header";
+import { allPosts } from "@/lib/posts";
+ const paginated = allPosts.slice(0, 4);
 
 
 const featuredPosts = [
@@ -19,7 +21,7 @@ export default function Home() {
         <h1 className="ml-30 mt-15 text-2xl">Featured Posts</h1>
 
         <div className="ml-30 grid grid-cols-2 gap-6 mt-15">
-          {featuredPosts.map((post) => (
+          {paginated.map((post) => (
             <PostcardLarge key={post.id} id={post.id} title={post.title} shortDescription={post.shortDescription} imageSrc={post.imageSrc} />
           ))}
         </div>

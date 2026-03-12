@@ -9,6 +9,7 @@ export default function Dashboard() {
 
 	useEffect(() => {
 		const auth = typeof window !== "undefined" ? localStorage.getItem("auth") : null;
+        console.log("Auth status:", auth);
 		if (!auth) {
 			router.push("/login");
 			return;
@@ -25,7 +26,7 @@ export default function Dashboard() {
 				<p className="text-zinc-600 mb-6">Protected admin area — manage your posts (UI only).</p>
 
 				<section className="space-y-3">
-					<div className="p-4 border rounded bg-white">No posts yet — this is a UI placeholder.</div>
+					<div className="p-4 border rounded bg-white"> hello admin</div>
 				</section>
 			</main>
 		</div>
