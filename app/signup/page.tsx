@@ -21,7 +21,7 @@ export default function Signup() {
 
 	return (
         <>
-        <div className="grid grid-cols-2 gap-250 ml-10 mt-10">
+        <div className="grid grid-cols-2 md:gap-250 ml-10 mt-10">
             <img src="/Blogstar.svg" alt="Blogstar" className="h-8" />
              <Link href="/login" className="text-blue-600">Login</Link>
         </div>

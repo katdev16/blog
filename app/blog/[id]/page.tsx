@@ -2,7 +2,10 @@ import Link from "next/link";
 import { Postdetail } from "@/components/blog/PostDetail/postdetail";
 
 import CommentForm from "./CommentForm";
-import { allPosts } from "@/lib/posts";
+import { getPostById } from "../../../lib/posts";
+
+// Force this App Router page to be server-rendered on every request (SSR)
+export const dynamic = 'force-dynamic';
 
 export default async function PostPage({ params }: { params?: Promise<{ id?: string | string[] }> | { id?: string | string[] } }) {
   const sp = await params;
@@ -13,14 +16,14 @@ export default async function PostPage({ params }: { params?: Promise<{ id?: str
   // eslint-disable-next-line no-console
   console.log("[PostPage] params:", sp);
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
-  const post = id ? allPosts.find((p) => p.id === String(id)) : undefined;
+  const post = id ? await new Promise(r => setTimeout(r, 800)).then(() => getPostById(String(id))) : undefined;
 
   if (!post) return (
     <div className="min-h-screen flex items-center justify-center">
       <div>
         <p className="mb-2">Post not found for id: <strong>{String(id)}</strong></p>
-        <p className="text-sm text-zinc-600">Make sure the ID in the URL matches 1–23.</p>
-        <pre className="mt-3 p-2 bg-white border rounded text-xs">{JSON.stringify({ params }, null, 2)}</pre>
+    
+        
       </div>
     </div>
   );

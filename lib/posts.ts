@@ -1,27 +1,70 @@
-export const allPosts = [
-  { id: "1", title: "Post #1", shortDescription: "This is the excerpt for post 1", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "2", title: "Post #2", shortDescription: "This is the excerpt for post 2", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "3", title: "Post #3", shortDescription: "This is the excerpt for post 3", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "4", title: "Post #4", shortDescription: "This is the excerpt for post 4", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "5", title: "Post #5", shortDescription: "This is the excerpt for post 5", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "6", title: "Post #6", shortDescription: "This is the excerpt for post 6", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "7", title: "Post #7", shortDescription: "This is the excerpt for post 7", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "8", title: "Post #8", shortDescription: "This is the excerpt for post 8", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "9", title: "Post #9", shortDescription: "This is the excerpt for post 9", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "10", title: "Post #10", shortDescription: "This is the excerpt for post 10", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "11", title: "Post #11", shortDescription: "This is the excerpt for post 11", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "12", title: "Post #12", shortDescription: "This is the excerpt for post 12", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "13", title: "Post #13", shortDescription: "This is the excerpt for post 13", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "14", title: "Post #14", shortDescription: "This is the excerpt for post 14", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "15", title: "Post #15", shortDescription: "This is the excerpt for post 15", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "16", title: "Post #16", shortDescription: "This is the excerpt for post 16", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "17", title: "Post #17", shortDescription: "This is the excerpt for post 17", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "18", title: "Post #18", shortDescription: "This is the excerpt for post 18", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "19", title: "Post #19", shortDescription: "This is the excerpt for post 19", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "20", title: "Post #20", shortDescription: "This is the excerpt for post 20", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "21", title: "Post #21", shortDescription: "This is the excerpt for post 21", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "22", title: "Post #22", shortDescription: "This is the excerpt for post 22", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "23", title: "Post #23", shortDescription: "This is the excerpt for post 23", imageSrc: "/images.jpg", longDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-];
+import fs from "fs";
+import fsPromises from "fs/promises";
+import path from "path";
+
+export type Post = {
+  id: string;
+  title: string;
+  shortDescription?: string;
+  imageSrc?: string;
+  longDescription?: string;
+};
+
+const postsPath = path.join(process.cwd(), "lib", "posts.json");
+
+function readPostsSync(): Post[] {
+  try {
+    const raw = fs.readFileSync(postsPath, "utf8");
+    return JSON.parse(raw) as Post[];
+  } catch (err) {
+    return [];
+  }
+}
+
+export const allPosts: Post[] = readPostsSync();
+
+export async function getAllPosts(): Promise<Post[]> {
+  const raw = await fsPromises.readFile(postsPath, "utf8");
+  return JSON.parse(raw) as Post[];
+}
+
+export async function getPostById(id: string): Promise<Post | undefined> {
+  const posts = await getAllPosts();
+  return posts.find((p) => p.id === id);
+}
+
+export async function createPost(data: Partial<Post>): Promise<Post> {
+  const posts = await getAllPosts();
+  // simple id generator
+  const id = String(Date.now());
+  const newPost: Post = {
+    id,
+    title: data.title ?? "Untitled",
+    shortDescription: data.shortDescription ?? "",
+    imageSrc: data.imageSrc ?? "/images.jpg",
+    longDescription: data.longDescription ?? "",
+  };
+  posts.unshift(newPost);
+  await fsPromises.writeFile(postsPath, JSON.stringify(posts, null, 2), "utf8");
+  return newPost;
+}
+
+export async function updatePost(id: string, data: Partial<Post>): Promise<Post | null> {
+  const posts = await getAllPosts();
+  const idx = posts.findIndex((p) => p.id === id);
+  if (idx === -1) return null;
+  const updated = { ...posts[idx], ...data };
+  posts[idx] = updated;
+  await fsPromises.writeFile(postsPath, JSON.stringify(posts, null, 2), "utf8");
+  return updated;
+}
+
+export async function deletePost(id: string): Promise<boolean> {
+  const posts = await getAllPosts();
+  const filtered = posts.filter((p) => p.id !== id);
+  if (filtered.length === posts.length) return false;
+  await fsPromises.writeFile(postsPath, JSON.stringify(filtered, null, 2), "utf8");
+  return true;
+}
 
 export default allPosts;

@@ -17,12 +17,13 @@ export default function Login() {
 		e.preventDefault();
 		// UI-only: set localStorage auth flag
 		localStorage.setItem("auth", "true");
+        console.log("Login successful, redirecting to dashboard...");
 		router.push("/dashboard");
 	}
 
 	return (
         <>
-        <div className="grid grid-cols-2 gap-250 ml-10 mt-10">
+        <div className="grid grid-cols-2 md:gap-250 ml-10 mt-10">
             <img src="/Blogstar.svg" alt="Blogstar" className="h-8" />
              <Link href="/signup" className="text-blue-600">Sign up</Link>
         </div>

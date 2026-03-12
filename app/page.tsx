@@ -1,32 +1,38 @@
 import Link from "next/link";
 import PostcardLarge from "@/components/blog/PostCard/postcardLarge";
 import { header as Header } from "@/components/common/Navbar/header";
-import { allPosts } from "@/lib/posts";
- const paginated = allPosts.slice(0, 4);
+import { getAllPosts } from "../lib/posts";
+// const featuredPosts = [
+//   { id: "1", title: "Introducing our blog", shortDescription: "Welcome to the blog — first post.", imageSrc: "/images.jpg", longDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
+//   { id: "2", title: "How to write great posts",  shortDescription: "Tips and tricks for better writing.", imageSrc: "/images.jpg", longDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
+//   { id: "3", title: "Advanced writing techniques", shortDescription: "Take your writing to the next level.", imageSrc: "/images.jpg", longDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
+//   { id: "4", title: "Getting started with blogging", shortDescription: "A beginner's guide to starting your blog.", imageSrc: "/images.jpg", longDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
+// ];
 
 
-const featuredPosts = [
-  { id: "1", title: "Introducing our blog", shortDescription: "Welcome to the blog — first post.", imageSrc: "/images.jpg", longDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "2", title: "How to write great posts",  shortDescription: "Tips and tricks for better writing.", imageSrc: "/images.jpg", longDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "3", title: "Advanced writing techniques", shortDescription: "Take your writing to the next level.", imageSrc: "/images.jpg", longDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-  { id: "4", title: "Getting started with blogging", shortDescription: "A beginner's guide to starting your blog.", imageSrc: "/images.jpg", longDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum quis quam eu auctor. Donec accumsan risus vel lacus dictum semper. Nam nibh dui, tempus et iaculis non, egestas et quam. Cras porta, enim at commodo elementum, nisl ipsum suscipit est, non tincidunt orci lectus lobortis erat. Phasellus tincidunt vehicula lobortis. Phasellus id mauris faucibus sapien sodales posuere. Mauris volutpat congue sem ut finibus. Phasellus interdum odio nisi, quis dictum eros bibendum ac." },
-];
+// Force this App Router page to be server-rendered on every request (SSR)
+export const dynamic = 'force-dynamic';
 
-export default function Home() {
+
+export default async function Home() {
+  const allPosts = await getAllPosts();
+  const paginated = allPosts.slice(0, 4);
+
   return (
     <div>
+      <Header />
 
+      <main className="container mx-auto px-4 py-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold mb-6">Featured Posts</h1>
 
-    <Header/>
-        <h1 className="ml-30 mt-15 text-2xl">Featured Posts</h1>
-
-        <div className="ml-30 grid grid-cols-2 gap-6 mt-15">
-          {paginated.map((post) => (
-            <PostcardLarge key={post.id} id={post.id} title={post.title} shortDescription={post.shortDescription} imageSrc={post.imageSrc} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {paginated.map((post: any) => (
+            <div key={post.id} className="w-full">
+              <PostcardLarge id={post.id} title={post.title} shortDescription={post.shortDescription} imageSrc={post.imageSrc} />
+            </div>
           ))}
         </div>
-
-
+      </main>
     </div>
   );
 }
