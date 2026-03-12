@@ -22,9 +22,9 @@ export default function Contact() {
 
         <>
         <Header/>
-		<div className="min-h-screen bg-zinc-50 dark:bg-black py-16">
+		<div className="min-h-screen  py-16">
 			<main className="mx-auto max-w-3xl px-6">
-				<h1 className="text-3xl font-bold mb-4 text-black dark:text-zinc-50">Contact</h1>
+				<h1 className="text-3xl font-bold mb-4 ">Contact</h1>
 				<form onSubmit={submit} className="space-y-4">
 					<div>
 						<label className="block text-sm">Name</label>

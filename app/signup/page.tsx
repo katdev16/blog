@@ -1,7 +1,8 @@
 "use client"
-
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { header as Header } from "../../components/common/Navbar/header";
 
 export default function Signup() {
 	const [form, setForm] = useState({ email: "", password: "" });
@@ -19,7 +20,15 @@ export default function Signup() {
 	}
 
 	return (
-		<div className="min-h-screen bg-zinc-50 dark:bg-black py-16">
+        <>
+        <div className="grid grid-cols-2 gap-250 ml-10 mt-10">
+            <img src="/Blogstar.svg" alt="Blogstar" className="h-8" />
+             <Link href="/login" className="text-blue-600">Login</Link>
+        </div>
+
+       
+        
+		<div className="min-h-screen py-16">
 			<main className="mx-auto max-w-md px-6">
 				<h1 className="text-2xl font-bold mb-4">Sign up</h1>
 				<form onSubmit={submit} className="space-y-4">
@@ -35,5 +44,6 @@ export default function Signup() {
 				</form>
 			</main>
 		</div>
+        </>
 	);
 }

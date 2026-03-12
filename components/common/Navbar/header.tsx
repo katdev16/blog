@@ -28,9 +28,8 @@ export const header = () => {
     return (
       <Loader />
     );
-  }
-
-  const isAuthed = Boolean(auth);
+  }else{
+     const isAuthed = Boolean(auth);
 
   return (
     <div className=" mt-10 flex flex-row items-center justify-between px-6">
@@ -53,4 +52,8 @@ export const header = () => {
       </nav>
     </div>
   );
+
+  }
+
+ 
 };
