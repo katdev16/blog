@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { header as Header } from "../../components/common/Navbar/header";
 
 export default function Dashboard() {
 	const router = useRouter();
@@ -20,7 +21,9 @@ export default function Dashboard() {
 	if (!checked) return <div className="min-h-screen" />;
 
 	return (
-		<div className="min-h-screen bg-zinc-50 dark:bg-black py-16">
+		<>
+		<Header />
+		<div className="min-h-screen py-16">
 			<main className="mx-auto max-w-3xl px-6">
 				<h1 className="text-3xl font-bold mb-4 text-black dark:text-zinc-50">Dashboard</h1>
 				<p className="text-zinc-600 mb-6">Protected admin area — manage your posts (UI only).</p>
@@ -30,5 +33,6 @@ export default function Dashboard() {
 				</section>
 			</main>
 		</div>
+		</>
 	);
 }

@@ -61,6 +61,7 @@ export const header = () => {
             <Link href="/about" className="text-blue-600">About</Link>
             <Link href="/blog" className="text-blue-600">Blogs</Link>
             <Link href="/contact" className="text-blue-600">Contact</Link>
+            <Link href="/dashboard" className="text-blue-600">Dashboard</Link>
 
             {isAuthed ? (
               <a href="#" onClick={handleLogout} className="text-blue-600">Logout</a>
@@ -77,6 +78,7 @@ export const header = () => {
             <Link href="/about" className="text-blue-600">About</Link>
             <Link href="/blog" className="text-blue-600">Blogs</Link>
             <Link href="/contact" className="text-blue-600">Contact</Link>
+            <Link href="/dashboard" className="text-blue-600">Dashboard</Link>
 
             {isAuthed ? (
               <a href="#" onClick={(e) => { setMobileOpen(false); handleLogout(e); }} className="text-blue-600">Logout</a>
