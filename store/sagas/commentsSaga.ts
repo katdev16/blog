@@ -28,7 +28,7 @@ function mockAddComment(postId: string, comment: Omit<any, 'id'>) {
 	});
 }
 
-function* handleFetchComments(action: ReturnType<typeof fetchCommentsRequest>) {
+function* handleFetchComments(action: ReturnType<typeof fetchCommentsRequest>): Generator<any, void, any> {
 	try {
 		const { postId } = action.payload as { postId: string };
 		const comments: any[] = yield call(mockFetchComments, postId);
@@ -38,7 +38,7 @@ function* handleFetchComments(action: ReturnType<typeof fetchCommentsRequest>) {
 	}
 }
 
-function* handleAddComment(action: ReturnType<typeof addCommentRequest>) {
+function* handleAddComment(action: ReturnType<typeof addCommentRequest>): Generator<any, void, any> {
 	try {
 		const { postId, comment } = action.payload as { postId: string; comment: any };
 		const newComment: any = yield call(mockAddComment, postId, comment);
@@ -48,7 +48,7 @@ function* handleAddComment(action: ReturnType<typeof addCommentRequest>) {
 	}
 }
 
-export default function* commentsSaga() {
+export default function* commentsSaga(): Generator<any, void, any> {
 	yield takeLatest(fetchCommentsRequest.type, handleFetchComments);
 	yield takeLatest(addCommentRequest.type, handleAddComment);
 }

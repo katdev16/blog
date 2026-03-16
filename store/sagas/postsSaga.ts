@@ -18,7 +18,7 @@ import {
 } from '../slices/postsSlice';
 import { ok } from 'assert';
 
-function* fetchPosts(action: ReturnType<typeof fetchPostsRequest>) {
+function* fetchPosts(action: ReturnType<typeof fetchPostsRequest>): Generator<any, void, any> {
 	try {
 		const { page, pageSize } = (action.payload ?? {}) as { page?: number; pageSize?: number };
 		const res: Response = yield call(fetch, '/api/posts');
@@ -37,7 +37,7 @@ function* fetchPosts(action: ReturnType<typeof fetchPostsRequest>) {
 	}
 }
 
-function* fetchPost(action: ReturnType<typeof fetchPostRequest>) {
+function* fetchPost(action: ReturnType<typeof fetchPostRequest>): Generator<any, void, any> {
 	try {
 		const { id } = action.payload as { id: string };
 		const res: Response = yield call(fetch, `/api/posts/${id}`);
@@ -49,7 +49,7 @@ function* fetchPost(action: ReturnType<typeof fetchPostRequest>) {
 	}
 }
 
-function* createPost(action: ReturnType<typeof createPostRequest>) {
+function* createPost(action: ReturnType<typeof createPostRequest>): Generator<any, void, any> {
 	try {
 		const body = action.payload as Partial<any>;
 		const res: Response = yield call(fetch, '/api/posts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
@@ -61,7 +61,7 @@ function* createPost(action: ReturnType<typeof createPostRequest>) {
 	}
 }
 
-function* updatePost(action: ReturnType<typeof updatePostRequest>) {
+function* updatePost(action: ReturnType<typeof updatePostRequest>): Generator<any, void, any> {
 	try {
 		const { id, data } = action.payload as { id: string; data: any };
 		const res: Response = yield call(fetch, `/api/posts/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
@@ -73,7 +73,7 @@ function* updatePost(action: ReturnType<typeof updatePostRequest>) {
 	}
 }
 
-function* deletePost(action: ReturnType<typeof deletePostRequest>) {
+function* deletePost(action: ReturnType<typeof deletePostRequest>): Generator<any, void, any> {
 	try {
 		const { id } = action.payload as { id: string };
 		// Debug log so we can see saga activity in the browser console
@@ -92,7 +92,7 @@ function* deletePost(action: ReturnType<typeof deletePostRequest>) {
 	}
 }
 
-export default function* postsSaga() {
+export default function* postsSaga(): Generator<any, void, any> {
 	yield takeLatest(fetchPostsRequest.type, fetchPosts);
 	yield takeLatest(fetchPostRequest.type, fetchPost);
 	yield takeLatest(createPostRequest.type, createPost);

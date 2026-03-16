@@ -1,10 +1,11 @@
 // pages/blog.tsx
-import { useRouter } from "next/router";
+"use client";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function Page() {
-  const router = useRouter();
-  const page = Number((router.query.page as string) ?? "1");
+  const searchParams = useSearchParams();
+  const page = Number(searchParams?.get("page") ?? "1");
   const pageSize = 10;
 
   const posts = Array.from({ length: pageSize }).map((_, i) => ({
@@ -22,17 +23,11 @@ export default function Page() {
       </ul>
 
       <nav style={{ display: "flex", gap: 8 }}>
-        <Link
-          href={{ pathname: "/blog", query: { page: Math.max(page - 1, 1) } }}
-          aria-disabled={page <= 1}
-        >
+        <Link href={`/blog?page=${Math.max(page - 1, 1)}`} aria-disabled={page <= 1}>
           Previous
         </Link>
-        <Link href={{ pathname: "/blog", query: { page: page + 1 } }}>
-          Next
-        </Link>
+        <Link href={`/blog?page=${page + 1}`}>Next</Link>
       </nav>
     </>
   );
 }
-``

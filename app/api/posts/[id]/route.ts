@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { getPostById, updatePost, deletePost } from "../../../../lib/posts";
 
-export async function GET(_req: Request, { params }: { params: { id: string } }) {
+export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { id } = params;
+    const p = await params;
+    const { id } = p;
     const post = await getPostById(id);
     if (!post) return NextResponse.json({ error: "Post not found" }, { status: 404 });
     return NextResponse.json(post);
@@ -14,9 +15,10 @@ export async function GET(_req: Request, { params }: { params: { id: string } })
   }
 }
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { id } = params;
+    const p = await params;
+    const { id } = p;
     const body = await req.json();
     const updated = await updatePost(id, body);
     if (!updated) return NextResponse.json({ error: "Post not found" }, { status: 404 });
@@ -28,13 +30,14 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   return PUT(req, { params });
 }
 
-export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { id } = params;
+    const p = await params;
+    const { id } = p;
     // Debug: log the incoming id and existing posts
     // eslint-disable-next-line no-console
     console.log('DELETE /api/posts/[id] received id:', id);
