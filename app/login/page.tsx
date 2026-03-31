@@ -7,18 +7,51 @@ import { header as Header } from "../../components/common/Navbar/header";
 
 export default function Login() {
 	const [form, setForm] = useState({ email: "", password: "" });
+	const [error, setError] = useState<string | null>(null);
+	const [submitting, setSubmitting] = useState(false);
 	const router = useRouter();
 
 	function update(e: React.ChangeEvent<HTMLInputElement>) {
 		setForm({ ...form, [e.target.name]: e.target.value });
 	}
 
-	function submit(e: React.FormEvent) {
+	async function submit(e: React.FormEvent) {
+		console.log("Submitting login form", form);
 		e.preventDefault();
-		// UI-only: set localStorage auth flag
-		localStorage.setItem("auth", "true");
-        console.log("Login successful, redirecting to dashboard...");
-		router.push("/dashboard");
+		setError(null);
+		setSubmitting(true);
+		try {
+			const res = await fetch('https://dummyjson.com/auth/login', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					username: form.email,
+					password: form.password,
+					expiresInMins: 30,
+				}),
+			});
+			const data = await res.json();
+			console.log('Login response', { status: res.status, data });
+			if (!res.ok) {
+				setError(data?.message || 'Login failed');
+				setSubmitting(false);
+				return;
+			}
+
+			// dummyjson returns a token and user info on success
+			if (data) {
+				localStorage.setItem('auth', JSON.stringify({ token: data.token, user: data.user }));
+				console.log('Login successful, redirecting to dashboard...');
+				router.push('/dashboard');
+			} else {
+				setError('Login failed: missing token');
+			}
+		} catch (err: any) {
+			console.error('Login error', err);
+			setError(err?.message ?? 'Network error');
+		} finally {
+			setSubmitting(false);
+		}
 	}
 
 	return (

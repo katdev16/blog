@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Postdetail } from "@/components/blog/PostDetail/postdetail";
 
 import CommentForm from "./CommentForm";
-import { getPostById } from "../../../lib/posts";
 
 // Force this App Router page to be server-rendered on every request (SSR)
 export const dynamic = 'force-dynamic';
@@ -16,7 +15,28 @@ export default async function PostPage({ params }: { params?: Promise<{ id?: str
   // eslint-disable-next-line no-console
   console.log("[PostPage] params:", sp);
   const id = Array.isArray(rawId) ? rawId[0] : rawId;
-  const post = id ? await new Promise(r => setTimeout(r, 800)).then(() => getPostById(String(id))) : undefined;
+  let post: any | undefined = undefined;
+  if (id) {
+    try {
+      const res = await fetch(`https://dummyjson.com/posts/${encodeURIComponent(String(id))}`);
+      if (res.ok) {
+        const data = await res.json();
+        post = {
+          id: String(data.id),
+          title: data.title,
+          shortDescription: data.body?.slice(0, 60) ?? '',
+          longDescription: data.body ?? '',
+          imageSrc: data.image ?? '/images.jpg',
+        };
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn('[PostPage] external fetch returned', res.status);
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('[PostPage] failed to fetch external post', e);
+    }
+  }
 
   if (!post) return (
     <div className="min-h-screen flex items-center justify-center">
@@ -28,10 +48,28 @@ export default async function PostPage({ params }: { params?: Promise<{ id?: str
     </div>
   );
 
-  const comments = [
-    { id: "c1", author: "Alice", text: "Nice post!" },
-    { id: "c2", author: "Bob", text: "Thanks for writing." },
-  ];
+  // Fetch comments for this post from dummyjson and normalize shape
+  let comments: Array<{ id: string; author: string; text: string }> = [];
+  if (id) {
+    try {
+      const cRes = await fetch(`https://dummyjson.com/posts/${encodeURIComponent(String(id))}/comments`);
+      if (cRes.ok) {
+        const cData = await cRes.json();
+        // dummyjson returns { comments: [...], total, skip, limit }
+        comments = (cData.comments || []).map((c: any) => ({
+          id: String(c.id),
+          author: c.user?.fullName || c.user?.username || `user_${c.user?.id ?? 'anon'}`,
+          text: c.body ?? String(c.text ?? ''),
+        }));
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn('[PostPage] comments fetch returned', cRes.status);
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('[PostPage] failed to fetch comments', e);
+    }
+  }
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black py-16">

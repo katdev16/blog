@@ -6,7 +6,7 @@ import CreatePostForm from '@/components/blog/CreatePostForm/CreatePostForm';
 import PostActions from '@/components/blog/PostActions/PostActions';
 import Link from "next/link";
 import { header as Header } from "@/components/common/Navbar/header";
-import { getAllPosts } from "../../lib/posts";
+// Using external posts API instead of local `getAllPosts`
 // import React, {  useState } from "react";
 
 // Force this App Router page to be server-rendered on every request (SSR)
@@ -17,7 +17,16 @@ export default async function BlogPage({ searchParams }: { searchParams?: Promis
   const page = Number(sp?.page || "1");
   const pageSize = 6;
 
-  const allPosts = await getAllPosts();
+  const res = await fetch('https://dummyjson.com/posts?limit=100');
+  if (!res.ok) throw new Error('Failed to fetch posts from external API');
+  const data = await res.json();
+  const allPosts = (data.posts || []).map((p: any) => ({
+    id: String(p.id),
+    title: p.title,
+    shortDescription: p.body?.slice(0, 60) ?? '',
+    longDescription: p.body ?? '',
+    imageSrc: p.image ?? '/images.jpg',
+  }));
 
   const start = (page - 1) * pageSize;
   const paginated = allPosts.slice(start, start + pageSize);
