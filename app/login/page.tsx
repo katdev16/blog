@@ -35,6 +35,7 @@ export default function Login() {
 			if (!res.ok) {
 				setError(data?.message || 'Login failed');
 				setSubmitting(false);
+				alert(`Login failed: ${data?.message || 'Unknown error'}`);
 				return;
 			}
 
