@@ -15,8 +15,20 @@ export const dynamic = 'force-dynamic';
 
 
 export default async function Home() {
-  const allPosts = await getAllPosts();
-  const paginated = allPosts.slice(0, 4);
+  // const allPosts = await getAllPosts();
+  // const paginated = allPosts.slice(0, 4);
+
+
+   const res = await fetch('https://dummyjson.com/posts?limit=4');
+  if (!res.ok) throw new Error('Failed to fetch posts from external API');
+  const data = await res.json();
+  const allPosts = (data.posts || []).map((p: any) => ({
+    id: String(p.id),
+    title: p.title,
+    shortDescription: p.body?.slice(0, 20) ?? '',
+    longDescription: p.body ?? '',
+    imageSrc: p.image ?? '/images.jpg',
+  }));
 
   return (
     <div>
@@ -26,7 +38,7 @@ export default async function Home() {
         <h1 className="text-2xl sm:text-3xl font-semibold mb-6">Featured Posts</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {paginated.map((post: any) => (
+          {allPosts.map((post: any) => (
             <div key={post.id} className="w-full">
               <PostcardLarge id={post.id} title={post.title} shortDescription={post.shortDescription} imageSrc={post.imageSrc} />
             </div>
